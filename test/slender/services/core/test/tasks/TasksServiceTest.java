@@ -7,6 +7,7 @@
 package slender.services.core.test.tasks;
 
 import com.slender.domain.Task;
+import java.io.File;
 import java.util.List;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
@@ -33,6 +34,15 @@ public class TasksServiceTest {
         
         Assert.assertEquals(tasks.size(), 2, "Size not equal to 2");
         Assert.assertEquals(tasks.get(1).getTaskName(), "dummy", "Comment content not equal to \"dummy\"");
+    }
+    
+    @Test
+    public void testGetTasksAttachments() {
+        TasksService service = new TasksServiceImpl();
+        List<File> files = service.getTaskAttachments(0);
+        
+        Assert.assertEquals(files.size(), 1, "Size not equal to 1");
+        Assert.assertEquals(files.get(0).getName(), "dummy.txt", "dummy.txt was not found.");
     }
     
     @BeforeClass
