@@ -7,14 +7,23 @@
 package slender.webservice.services.tasks.impl;
 
 import com.slender.domain.Attachment;
+import com.slender.domain.Comment;
 import com.slender.domain.Task;
 import com.slender.domain.TaskTime;
+import com.slender.domain.UserTask;
+import com.slender.domain.Users;
 import com.slender.service.crud.AttachmentCrud;
+import com.slender.service.crud.CommentCrud;
 import com.slender.service.crud.TaskCrud;
 import com.slender.service.crud.TaskTimeCrud;
+import com.slender.service.crud.UserCrud;
+import com.slender.service.crud.UserTaskCrud;
 import com.slender.service.crud.impl.AttachmentCrudImpl;
+import com.slender.service.crud.impl.CommentCrudImpl;
 import com.slender.service.crud.impl.TaskCrudImpl;
 import com.slender.service.crud.impl.TaskTimeCrudImpl;
+import com.slender.service.crud.impl.UserCrudImpl;
+import com.slender.service.crud.impl.UserTaskCrudImpl;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
@@ -29,10 +38,9 @@ import slender.webservice.services.tasks.TasksService;
 public class TasksServiceImpl implements TasksService {
     
     @Override
-    public List<Task> getTasks(Integer projectId) {
+    public Task getTask(Integer id) {
         TaskCrud crud = new TaskCrudImpl();
-        List<Task> tasks = crud.getEntitiesByProperName("projectId", projectId);
-        return tasks;
+        return crud.findById(id);
     }
 
     @Override
@@ -50,7 +58,20 @@ public class TasksServiceImpl implements TasksService {
     }
 
     @Override
-    public List<File> getTaskAttachments(int taskId) {
+    public void addProgress(Integer taskId, Integer userId, int hours) {
+        TaskTimeCrud crud = new TaskTimeCrudImpl();
+        
+        TaskTime taskTime = new TaskTime();
+        taskTime.setCreateDate(new Date());
+        taskTime.setTaskId(taskId);
+        taskTime.setUserId(userId);
+        taskTime.setTimeSpent(hours);
+        
+        crud.persist(taskTime);
+    }
+    
+    @Override
+    public List<File> getTaskAttachments(Integer taskId) {
         AttachmentCrud crud = new AttachmentCrudImpl();
         List<Attachment> list = crud.getEntitiesByProperName("taskId", taskId);
         
@@ -68,15 +89,24 @@ public class TasksServiceImpl implements TasksService {
     }
 
     @Override
-    public void addProgress(Integer taskId, Integer userId, int hours) {
-        TaskTimeCrud crud = new TaskTimeCrudImpl();
+    public List<Comment> getTaskComments(Integer taskId) {
+        CommentCrud crud = new CommentCrudImpl();
+        List<Comment> comments = crud.getEntitiesByProperName("taskId", taskId);
+        return comments;
+    }
+
+    @Override
+    public List<Users> getTaskUsers(Integer taskId) {
+        UserTaskCrud crud = new UserTaskCrudImpl();
+        List<UserTask> userTasks = crud.getEntitiesByProperName("taskId", taskId);
         
-        TaskTime taskTime = new TaskTime();
-        taskTime.setCreateDate(new Date());
-        taskTime.setTaskId(taskId);
-        taskTime.setUserId(userId);
-        taskTime.setTimeSpent(hours);
+        UserCrud userCrud = new UserCrudImpl();
+        List<Users> users = new ArrayList<Users>();
         
-        crud.persist(taskTime);
+        for(UserTask u : userTasks) {
+            users.add(userCrud.findById(u.getId()));
+        }
+        
+        return users;
     }
 }

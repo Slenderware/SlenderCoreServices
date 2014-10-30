@@ -6,7 +6,9 @@
 
 package slender.webservice.services.tasks;
 
+import com.slender.domain.Comment;
 import com.slender.domain.Task;
+import com.slender.domain.Users;
 import java.io.File;
 import java.util.List;
 
@@ -15,8 +17,10 @@ import java.util.List;
  * @author Heinrich
  */
 public interface TasksService {
-    public List<Task> getTasks(Integer projectId);
-    public List<File> getTaskAttachments(int taskId);
+    public Task getTask(Integer id);
+    public List<File> getTaskAttachments(Integer taskId);
+    public List<Comment> getTaskComments(Integer taskId);
+    public List<Users> getTaskUsers(Integer taskId);
     public int getProgress(Integer taskId);
     public void addProgress(Integer taskId, Integer userId, int hours);
 }

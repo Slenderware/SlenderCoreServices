@@ -6,6 +6,8 @@
 
 package slender.services.core.test.users;
 
+import com.slender.domain.Project;
+import com.slender.domain.Task;
 import com.slender.domain.Users;
 import java.util.List;
 import org.testng.Assert;
@@ -23,18 +25,53 @@ import slender.webservice.services.users.impl.UsersServiceImpl;
  */
 public class UsersServiceTest {
     
+    private static String session = "sessionvariable1";
+    
     public UsersServiceTest() {
     }
 
     @Test
-    public void testGetUsersOfTask() {
+    public void testUserBySession() {
         UsersService service = new UsersServiceImpl();
-        List<Users> users = service.getUsersFromTask(0);
+        Users user = service.getUserBySession(session);
         
-        Assert.assertEquals(users.size(), 1, "Size not equal to 1");
-        Assert.assertEquals(users.get(0).getUsername(), "dummy", "Comment content not equal to \"dummy\"");
+        Assert.assertEquals(user.getUsername(), "dummy");
+    }
+    
+    @Test
+    public void testUserProjects() {
+        UsersService service = new UsersServiceImpl();
+        List<Project> list = service.getUserProjects(session);
+        
+        Assert.assertEquals(list.size(), 2);
+        Assert.assertEquals(list.get(0).getProjectName(), "dummy");
     }
 
+    @Test
+    public void testUserTasks() {
+        UsersService service = new UsersServiceImpl();
+        List<Task> list = service.getUserTasks(session);
+        
+        Assert.assertEquals(list.size(), 1);
+        Assert.assertEquals(list.get(0).getTaskName(), "dummy");
+    }
+    
+    @Test
+    public void timeSpentForTask() {
+        UsersService service = new UsersServiceImpl();
+        int time = service.getTimeSpentForTask(session, 0);
+        
+        Assert.assertEquals(time, 5);
+    }
+    
+    @Test
+    public void timeSpentForProject() {
+        UsersService service = new UsersServiceImpl();
+        int time = service.getTimeSpentForProject(session, 0);
+        
+        Assert.assertEquals(time, 5);
+    }
+    
     @BeforeClass
     public static void setUpClass() throws Exception {
     }

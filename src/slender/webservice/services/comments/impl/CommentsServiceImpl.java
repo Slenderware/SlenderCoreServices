@@ -19,10 +19,9 @@ import slender.webservice.services.comments.CommentsService;
 public class CommentsServiceImpl implements CommentsService {
 
     @Override
-    public List<Comment> getComments(Integer taskId) {
+    public Comment getComment(Integer commentId) {
         CommentCrud crud = new CommentCrudImpl();
-        List<Comment> comments = crud.getEntitiesByProperName("taskId", taskId);
-        return comments;
+        return crud.findById(commentId);
     }
-    
+
 }

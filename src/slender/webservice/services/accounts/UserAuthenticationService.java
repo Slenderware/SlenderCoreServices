@@ -14,5 +14,4 @@ import com.slender.domain.Users;
  */
 public interface UserAuthenticationService {
     public int authenticate(String username, String password);
-    public int addUser(Users user);
 }   

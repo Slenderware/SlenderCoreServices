@@ -6,7 +6,9 @@
 
 package slender.services.core.test.tasks;
 
+import com.slender.domain.Comment;
 import com.slender.domain.Task;
+import com.slender.domain.Users;
 import java.io.File;
 import java.util.List;
 import org.testng.Assert;
@@ -28,21 +30,46 @@ public class TasksServiceTest {
     }
 
     @Test
-    public void testGetTasksOfProject() {
+    public void testGetTask() {
         TasksService service = new TasksServiceImpl();
-        List<Task> tasks = service.getTasks(0);
+        Task task = service.getTask(0);
         
-        Assert.assertEquals(tasks.size(), 2, "Size not equal to 2");
-        Assert.assertEquals(tasks.get(1).getTaskName(), "dummy", "Comment content not equal to \"dummy\"");
+        Assert.assertEquals(task.getTaskName(), "dummy", "Task name not equal to 'dummy'");
     }
     
     @Test
-    public void testGetTasksAttachments() {
+    public void testTaskComments() {
+        TasksService service = new TasksServiceImpl();
+        List<Comment> list = service.getTaskComments(0);
+        
+        Assert.assertEquals(list.size(), 1, "Size not equal to 1");
+        Assert.assertEquals(list.get(0).getComment(), "dummy", "Comment not equal to 'dummy'");
+    }
+    
+    @Test
+    public void testTaskUsers() {
+        TasksService service = new TasksServiceImpl();
+        List<Users> list = service.getTaskUsers(0);
+        
+        Assert.assertEquals(list.size(), 1, "Size not equal to 1");
+        Assert.assertEquals(list.get(0).getUsername(), "dummy", "Username not equal to 'dummy'");
+    }
+    
+    @Test
+    public void testTasksAttachments() {
         TasksService service = new TasksServiceImpl();
         List<File> files = service.getTaskAttachments(0);
         
         Assert.assertEquals(files.size(), 1, "Size not equal to 1");
         Assert.assertEquals(files.get(0).getName(), "dummy.txt", "dummy.txt was not found.");
+    }
+    
+    @Test
+    public void testGetProgress() {
+        TasksService service = new TasksServiceImpl();
+        int progress = service.getProgress(0);
+        
+        Assert.assertEquals(progress, 5);
     }
     
     @BeforeClass

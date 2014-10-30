@@ -37,17 +37,4 @@ public class UserAuthenticationServiceImpl implements UserAuthenticationService 
         
         return 1;
     }
-    
-    /**
-     * @return ID or -1 if error occurred
-     */
-    @Override
-    public int addUser(Users user) {
-        
-        UserCrud crud = new UserCrudImpl();
-        crud.persist(user);
-        
-        return 0;
-    }
-    
 }

@@ -6,6 +6,8 @@
 
 package slender.webservice.services.users;
 
+import com.slender.domain.Project;
+import com.slender.domain.Task;
 import com.slender.domain.Users;
 import java.util.List;
 
@@ -14,5 +16,9 @@ import java.util.List;
  * @author Heinrich
  */
 public interface UsersService {
-    public List<Users> getUsersFromTask(Integer taskId);
+    public Users getUserBySession(String sessionId);
+    public List<Project> getUserProjects(String sessionId);
+    public List<Task> getUserTasks(String sessionId);
+    public int getTimeSpentForTask(String sessionId, Integer taskId);
+    public int getTimeSpentForProject(String sessionId, Integer projectId);
 }

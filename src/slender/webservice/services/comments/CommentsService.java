@@ -14,5 +14,5 @@ import java.util.List;
  * @author Heinrich
  */
 public interface CommentsService {
-    public List<Comment> getComments(Integer taskId);
+    public Comment getComment(Integer commentId);
 }
