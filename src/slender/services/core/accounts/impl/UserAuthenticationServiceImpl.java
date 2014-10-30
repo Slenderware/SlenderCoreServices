@@ -4,14 +4,14 @@
  * and open the template in the editor.
  */
 
-package slender.webservice.services.accounts.impl;
+package slender.services.core.accounts.impl;
 
 import com.slender.domain.Users;
 import com.slender.service.crud.UserCrud;
 import com.slender.service.crud.impl.UserCrudImpl;
 import java.util.List;
 import javax.xml.bind.JAXBElement;
-import slender.webservice.services.accounts.UserAuthenticationService;
+import slender.services.core.accounts.UserAuthenticationService;
 
 /**
  *

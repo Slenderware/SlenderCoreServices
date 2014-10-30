@@ -17,8 +17,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import slender.webservice.services.projects.ProjectsService;
-import slender.webservice.services.projects.impl.ProjectsServiceImpl;
+import slender.services.core.projects.ProjectsService;
+import slender.services.core.projects.impl.ProjectsServiceImpl;
 
 /**
  *

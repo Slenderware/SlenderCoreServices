@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package slender.webservice.services.projects;
+package slender.services.core.projects;
 
 import com.slender.domain.Comment;
 import com.slender.domain.Project;

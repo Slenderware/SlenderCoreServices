@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package slender.webservice.services.users;
+package slender.services.core.users;
 
 import com.slender.domain.Project;
 import com.slender.domain.Task;

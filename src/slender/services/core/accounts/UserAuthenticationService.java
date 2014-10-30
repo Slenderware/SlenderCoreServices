@@ -4,12 +4,14 @@
  * and open the template in the editor.
  */
 
-package slender.webservice.constants;
+package slender.services.core.accounts;
+
+import com.slender.domain.Users;
 
 /**
  *
  * @author Heinrich
  */
-public class Constants {
-    public static String ATTACHMENTS_PATH = "/data/attachments/";
-}
+public interface UserAuthenticationService {
+    public int authenticate(String username, String password);
+}   

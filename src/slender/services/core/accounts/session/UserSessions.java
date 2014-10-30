@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package slender.webservice.services.accounts.session;
+package slender.services.core.accounts.session;
 
 import com.slender.domain.Users;
 import com.slender.service.crud.UserCrud;

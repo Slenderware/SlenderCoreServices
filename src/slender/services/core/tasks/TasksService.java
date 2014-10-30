@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package slender.webservice.services.tasks;
+package slender.services.core.tasks;
 
 import com.slender.domain.Comment;
 import com.slender.domain.Task;

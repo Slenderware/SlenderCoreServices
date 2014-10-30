@@ -4,13 +4,13 @@
  * and open the template in the editor.
  */
 
-package slender.webservice.services.comments.impl;
+package slender.services.core.comments.impl;
 
 import com.slender.domain.Comment;
 import com.slender.service.crud.CommentCrud;
 import com.slender.service.crud.impl.CommentCrudImpl;
 import java.util.List;
-import slender.webservice.services.comments.CommentsService;
+import slender.services.core.comments.CommentsService;
 
 /**
  *

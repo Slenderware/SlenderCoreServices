@@ -4,14 +4,15 @@
  * and open the template in the editor.
  */
 
-package slender.webservice.services.accounts;
+package slender.services.core.comments;
 
-import com.slender.domain.Users;
+import com.slender.domain.Comment;
+import java.util.List;
 
 /**
  *
  * @author Heinrich
  */
-public interface UserAuthenticationService {
-    public int authenticate(String username, String password);
-}   
+public interface CommentsService {
+    public Comment getComment(Integer commentId);
+}

@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package slender.webservice.services.tasks.impl;
+package slender.services.core.tasks.impl;
 
 import com.slender.domain.Attachment;
 import com.slender.domain.Comment;
@@ -28,8 +28,8 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import slender.webservice.constants.Constants;
-import slender.webservice.services.tasks.TasksService;
+import slender.services.core.constants.Constants;
+import slender.services.core.tasks.TasksService;
 
 /**
  *

@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package slender.webservice.services.projects.impl;
+package slender.services.core.projects.impl;
 
 import com.slender.domain.Comment;
 import com.slender.domain.Project;
@@ -26,7 +26,7 @@ import com.slender.service.crud.impl.UserCrudImpl;
 import com.slender.service.crud.impl.UserProjectCrudImpl;
 import java.util.ArrayList;
 import java.util.List;
-import slender.webservice.services.projects.ProjectsService;
+import slender.services.core.projects.ProjectsService;
 
 /**
  *

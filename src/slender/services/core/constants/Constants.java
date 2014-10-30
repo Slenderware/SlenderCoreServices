@@ -4,15 +4,12 @@
  * and open the template in the editor.
  */
 
-package slender.webservice.services.comments;
-
-import com.slender.domain.Comment;
-import java.util.List;
+package slender.services.core.constants;
 
 /**
  *
  * @author Heinrich
  */
-public interface CommentsService {
-    public Comment getComment(Integer commentId);
+public class Constants {
+    public static String ATTACHMENTS_PATH = "/data/attachments/";
 }
