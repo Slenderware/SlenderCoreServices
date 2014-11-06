@@ -22,4 +22,5 @@ public interface ProjectsService {
     public List<Task> getProjectTasks(Integer projId);
     public List<Comment> getProjectComments(Integer projId);
     public int getProjectProgress(Integer projId);
+    public Project addProject(Project project);
 }

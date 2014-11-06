@@ -91,4 +91,10 @@ public class ProjectsServiceImpl implements ProjectsService {
         
         return timeSpent;
     }
+
+    @Override
+    public Project addProject(Project project) {
+       ProjectCrud crud = new ProjectCrudImpl();
+       return crud.persist(project);
+    }     
 }

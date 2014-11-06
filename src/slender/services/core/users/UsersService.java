@@ -21,4 +21,5 @@ public interface UsersService {
     public List<Task> getUserTasks(String sessionId);
     public int getTimeSpentForTask(String sessionId, Integer taskId);
     public int getTimeSpentForProject(String sessionId, Integer projectId);
+    public Users addUser(Users user);
 }

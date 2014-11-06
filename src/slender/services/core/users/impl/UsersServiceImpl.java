@@ -126,4 +126,10 @@ public class UsersServiceImpl implements UsersService {
         // Get User id from session able
         return 0;
     }
+
+    @Override
+    public Users addUser(Users user) {
+        UserCrud crud = new UserCrudImpl();
+        return crud.persist(user);
+    }
 }

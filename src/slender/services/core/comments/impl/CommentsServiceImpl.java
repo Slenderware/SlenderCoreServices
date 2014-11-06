@@ -9,7 +9,6 @@ package slender.services.core.comments.impl;
 import com.slender.domain.Comment;
 import com.slender.service.crud.CommentCrud;
 import com.slender.service.crud.impl.CommentCrudImpl;
-import java.util.List;
 import slender.services.core.comments.CommentsService;
 
 /**
@@ -22,6 +21,12 @@ public class CommentsServiceImpl implements CommentsService {
     public Comment getComment(Integer commentId) {
         CommentCrud crud = new CommentCrudImpl();
         return crud.findById(commentId);
+    }
+
+    @Override
+    public Comment addComment(Comment comment) {
+        CommentCrud crud = new CommentCrudImpl();
+        return crud.persist(comment);
     }
 
 }

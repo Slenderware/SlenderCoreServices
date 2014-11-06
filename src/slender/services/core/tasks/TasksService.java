@@ -21,7 +21,9 @@ public interface TasksService {
     public List<File> getTaskAttachments(Integer taskId);
     public List<Comment> getTaskComments(Integer taskId);
     public List<Users> getTaskUsers(Integer taskId);
+    public List<Task> getTaskSubTasks(Integer taskId);
     public int getProgress(Integer taskId);
     public void addProgress(Integer taskId, Integer userId, int hours);
+    public Task addTask(Task task);
 }
 

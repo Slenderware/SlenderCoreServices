@@ -109,4 +109,16 @@ public class TasksServiceImpl implements TasksService {
         
         return users;
     }
+
+    @Override
+    public List<Task> getTaskSubTasks(Integer taskId) {
+        TaskCrud crud = new TaskCrudImpl();
+        return crud.getEntitiesByProperName("projectId", taskId);
+    }
+
+    @Override
+    public Task addTask(Task task) {
+        TaskCrud crud = new TaskCrudImpl();
+        return crud.persist(task);
+    }
 }

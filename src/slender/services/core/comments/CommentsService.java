@@ -15,4 +15,5 @@ import java.util.List;
  */
 public interface CommentsService {
     public Comment getComment(Integer commentId);
+    public Comment addComment(Comment comment);
 }
