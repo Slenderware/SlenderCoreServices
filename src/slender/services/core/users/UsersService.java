@@ -16,6 +16,7 @@ import java.util.List;
  * @author Heinrich
  */
 public interface UsersService {
+    public Users getUser(Integer id);
     public Users getUserBySession(String sessionId);
     public List<Project> getUserProjects(String sessionId);
     public List<Task> getUserTasks(String sessionId);

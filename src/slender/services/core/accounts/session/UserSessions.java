@@ -8,7 +8,6 @@ package slender.services.core.accounts.session;
 
 import com.slender.domain.Session;
 import com.slender.domain.Users;
-import com.slender.service.crud.SessionCrud;
 import com.slender.service.crud.UserCrud;
 import com.slender.service.crud.impl.SessionCrudImpl;
 import com.slender.service.crud.impl.UserCrudImpl;
@@ -20,28 +19,44 @@ import java.util.List;
  */
 public class UserSessions {
     public static Users getUser(String sessionId) {        
-        UserCrud crud = new UserCrudImpl();
-        
-        // Find user attached to session id and return user
-        
-        return crud.findById(0);
-    }
-    
-    public static String getNewSessions(int userId) {        
         SessionCrudImpl crud = new SessionCrudImpl();
-        String sessionId = getSessionString(userId);
+        List<Session> tmpSessions = crud.getEntitiesByProperName("id", sessionId);
         
-        List<Session> tmpSession = crud.getEntitiesByProperName("sessionId", sessionId);
-        
-        if(tmpSession.isEmpty()) {
-            Session session = new Session();
-            session.setUserId(userId);
-            session.setId(sessionId);
+        if(tmpSessions.size() > 0) {
+            Session session = tmpSessions.get(0);
 
-            crud.persist(session);
+            UserCrud userCrud = new UserCrudImpl();
+            return userCrud.findById(session.getUserId());
         }
         
-        return sessionId;
+        return null;
+    }
+    
+    public static String getNewSessions(String username) {       
+        UserCrud userCrud = new UserCrudImpl();
+        List<Users> users = userCrud.getEntitiesByProperName("username", username);
+        
+        if(users.size() > 0) {
+        
+            int userId = users.get(0).getId();
+            
+            SessionCrudImpl crud = new SessionCrudImpl();
+            String sessionId = getSessionString(userId);
+
+            List<Session> tmpSession = crud.getEntitiesByProperName("id", sessionId);
+
+            if(tmpSession.isEmpty()) {
+                Session session = new Session();
+                session.setUserId(userId);
+                session.setId(sessionId);
+
+                crud.persist(session);
+            }
+
+            return sessionId;
+        }
+        
+        return null;
     }
     
     private static String getSessionString(int userId) {

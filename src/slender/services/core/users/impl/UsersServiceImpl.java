@@ -26,6 +26,7 @@ import com.slender.service.crud.impl.UserProjectCrudImpl;
 import com.slender.service.crud.impl.UserTaskCrudImpl;
 import java.util.ArrayList;
 import java.util.List;
+import slender.services.core.accounts.session.UserSessions;
 import slender.services.core.users.UsersService;
 
 /**
@@ -123,13 +124,18 @@ public class UsersServiceImpl implements UsersService {
     }
     
     private int getUserId(String sessionId) {
-        // Get User id from session able
-        return 0;
+        return UserSessions.getUser(sessionId).getId();
     }
 
     @Override
     public Users addUser(Users user) {
         UserCrud crud = new UserCrudImpl();
         return crud.persist(user);
+    }
+
+    @Override
+    public Users getUser(Integer id) {
+        UserCrud crud = new UserCrudImpl();
+        return crud.findById(id);
     }
 }
