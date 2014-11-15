@@ -17,12 +17,24 @@ import slender.services.core.comments.CommentsService;
  */
 public class CommentsServiceImpl implements CommentsService {
 
+    /**
+     * Get the comment depending on an ID.
+     * 
+     * @param commentId ID of comment
+     * @return          The comment
+     */
     @Override
     public Comment getComment(Integer commentId) {
         CommentCrud crud = new CommentCrudImpl();
         return crud.findById(commentId);
     }
 
+    /**
+     * Add a comment, given a comment object.
+     * 
+     * @param comment   The comment object
+     * @return          Return ID populated comment
+     */
     @Override
     public Comment addComment(Comment comment) {
         CommentCrud crud = new CommentCrudImpl();

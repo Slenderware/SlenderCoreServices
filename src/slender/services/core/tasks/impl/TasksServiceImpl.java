@@ -37,6 +37,11 @@ import slender.services.core.tasks.TasksService;
  */
 public class TasksServiceImpl implements TasksService {
     
+    /**
+     *
+     * @param id
+     * @return
+     */
     @Override
     public Task getTask(Integer id) {
         TaskCrud crud = new TaskCrudImpl();
@@ -44,98 +49,10 @@ public class TasksServiceImpl implements TasksService {
     }
 
     /**
-    * Does some thing in old style.
-    *
-    * @deprecated use {@link #getProgressPercentage()} instead.  
-    */
-    @Deprecated
-    @Override
-    public int getProgress(Integer taskId) {
-        TaskTimeCrud crud = new TaskTimeCrudImpl();
-        List<TaskTime> task = crud.getEntitiesByProperName("taskId", taskId);
-        
-        int progress = 0;
-        
-        for(TaskTime t : task) {
-            progress += t.getTimeSpent();
-        }
-        
-        return progress;
-    }
-    
-    @Override
-    public double getProgressPercentage(Integer taskId) {
-        TaskTimeCrud crud = new TaskTimeCrudImpl();
-        List<TaskTime> tasks = crud.getEntitiesByProperName("taskId", taskId);
-        
-        double progress = 0;
-        
-        for(TaskTime t : tasks) {
-            progress += t.getTimeSpent();
-        }
-        
-        return Math.round((progress/tasks.size()) * 100);
-    }
-
-    @Override
-    public void addProgress(Integer taskId, Integer userId, int hours) {
-        TaskTimeCrud crud = new TaskTimeCrudImpl();
-        
-        TaskTime taskTime = new TaskTime();
-        taskTime.setCreateDate(new Date());
-        taskTime.setTaskId(taskId);
-        taskTime.setUserId(userId);
-        taskTime.setTimeSpent(hours);
-        
-        crud.persist(taskTime);
-    }
-    
-    @Override
-    public List<File> getTaskAttachments(Integer taskId) {
-        AttachmentCrud crud = new AttachmentCrudImpl();
-        List<Attachment> list = crud.getEntitiesByProperName("taskId", taskId);
-        
-        List<File> files = new ArrayList<>();
-        
-        String dir = System.getProperty("user.dir");;
-        File file;
-        for(Attachment a : list) {
-            file = new File(dir + Constants.ATTACHMENTS_PATH + a.getAttachment());
-            if(file.exists())
-                files.add(file);
-        }
-        
-        return files;
-    }
-
-    @Override
-    public List<Comment> getTaskComments(Integer taskId) {
-        CommentCrud crud = new CommentCrudImpl();
-        List<Comment> comments = crud.getEntitiesByProperName("taskId", taskId);
-        return comments;
-    }
-
-    @Override
-    public List<Users> getTaskUsers(Integer taskId) {
-        UserTaskCrud crud = new UserTaskCrudImpl();
-        List<UserTask> userTasks = crud.getEntitiesByProperName("taskId", taskId);
-        
-        UserCrud userCrud = new UserCrudImpl();
-        List<Users> users = new ArrayList<Users>();
-        
-        for(UserTask u : userTasks) {
-            users.add(userCrud.findById(u.getId()));
-        }
-        
-        return users;
-    }
-
-    @Override
-    public List<Task> getTaskSubTasks(Integer taskId) {
-        TaskCrud crud = new TaskCrudImpl();
-        return crud.getEntitiesByProperName("projectId", taskId);
-    }
-
+     *
+     * @param task
+     * @return
+     */
     @Override
     public Task addTask(Task task) {
         TaskCrud crud = new TaskCrudImpl();

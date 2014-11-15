@@ -7,7 +7,6 @@
 package slender.services.core.comments;
 
 import com.slender.domain.Comment;
-import java.util.List;
 
 /**
  *

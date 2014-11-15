@@ -18,6 +18,16 @@ import slender.services.core.accounts.UserAuthenticationService;
  */
 public class UserAuthenticationServiceImpl implements UserAuthenticationService {
 
+    /**
+     * Allows an user to be authenticated.
+     * Checks if the username and the password supplied is correct.
+     * 
+     * @param username  Username of the user
+     * @param password  Password of the user
+     * @return          0 for successful
+     *                  1 for incorrect username
+     *                  2 for incorrect password
+     */
     @Override
     public int authenticate(String username, String password) {
         UserCrud crud = new UserCrudImpl();

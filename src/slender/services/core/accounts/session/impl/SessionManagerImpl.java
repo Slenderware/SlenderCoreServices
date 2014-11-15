@@ -26,6 +26,12 @@ import slender.services.core.accounts.session.SessionManager;
  */
 public class SessionManagerImpl implements SessionManager {
     
+    /**
+     * Uses the username as an input to create the appropriate session in the database and to return the session key.
+     * 
+     * @param username  The username of the user
+     * @return          The new session ID
+     */
     @Override
     public String getNewSession(String username) {
         UserCrud userCrud = new UserCrudImpl();
@@ -54,6 +60,12 @@ public class SessionManagerImpl implements SessionManager {
         return null;
     }
     
+    /**
+     * Returns the user depending on a session ID
+     * 
+     * @param sessionId The session ID of the user
+     * @return          The User
+     */
     @Override
     public Users getUser(String sessionId) {        
         SessionCrudImpl crud = new SessionCrudImpl();

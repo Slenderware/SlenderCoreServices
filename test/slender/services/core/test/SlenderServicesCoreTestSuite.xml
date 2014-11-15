@@ -20,7 +20,8 @@
     
     <test name="slender.services.core.test suite">
         <packages>
-            <package name="slender.services.core.test.*"/>
+            <package name="slender.services.core.test.setup.*"/>
+            <package name="slender.services.core.test.services.*"/>
         </packages>
     </test>
 

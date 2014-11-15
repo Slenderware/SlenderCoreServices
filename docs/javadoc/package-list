@@ -1,0 +1,15 @@
+slender.services.core.accounts
+slender.services.core.accounts.impl
+slender.services.core.accounts.session
+slender.services.core.accounts.session.impl
+slender.services.core.comments
+slender.services.core.comments.impl
+slender.services.core.company
+slender.services.core.company.impl
+slender.services.core.constants
+slender.services.core.projects
+slender.services.core.projects.impl
+slender.services.core.tasks
+slender.services.core.tasks.impl
+slender.services.core.users
+slender.services.core.users.impl

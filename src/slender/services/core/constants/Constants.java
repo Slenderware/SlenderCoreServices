@@ -11,5 +11,9 @@ package slender.services.core.constants;
  * @author Heinrich
  */
 public class Constants {
+
+    /**
+     *  Folder for the attachments
+     */
     public static String ATTACHMENTS_PATH = "/data/attachments/";
 }

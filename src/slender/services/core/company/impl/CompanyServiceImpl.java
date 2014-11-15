@@ -25,12 +25,24 @@ import slender.services.core.company.CompanyService;
  */
 public class CompanyServiceImpl implements CompanyService {
 
+    /**
+     * Add new Company
+     * 
+     * @param company   Company entity object
+     * @return          ID populated company
+     */
     @Override
     public Company addCompany(Company company) {
         CompanyCrud crud = new CompanyCrudImpl();
         return crud.persist(company);
     }
 
+    /**
+     * Return a list of users for a company
+     * 
+     * @param companyId ID of the company
+     * @return          List of users
+     */
     @Override
     public List<Users> getCompanyUsers(Integer companyId) {
         UserCrud crud = new UserCrudImpl();
