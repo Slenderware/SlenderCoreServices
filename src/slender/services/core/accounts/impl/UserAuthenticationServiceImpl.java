@@ -10,7 +10,6 @@ import com.slender.domain.Users;
 import com.slender.service.crud.UserCrud;
 import com.slender.service.crud.impl.UserCrudImpl;
 import java.util.List;
-import javax.xml.bind.JAXBElement;
 import slender.services.core.accounts.UserAuthenticationService;
 
 /**

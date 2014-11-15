@@ -20,7 +20,13 @@ public interface UsersService {
     public Users getUserBySession(String sessionId);
     public List<Project> getUserProjects(String sessionId);
     public List<Task> getUserTasks(String sessionId);
+    public List<Task> getUserProjectTasks(String sessionId, Integer projectId);
     public int getTimeSpentForTask(String sessionId, Integer taskId);
     public int getTimeSpentForProject(String sessionId, Integer projectId);
+    public double getPercentageSpentForTask(String sessionId, Integer taskId);
+    public double getPercentageSpentForProject(String sessionId, Integer projectId);
     public Users addUser(Users user);
+    public Users addAdminUser(Users user);
+    public boolean addUserToProject(Integer userId, Integer projId);
+    public boolean addUserToTask(Integer userId, Integer taskId);
 }

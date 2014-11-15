@@ -23,6 +23,7 @@ public interface TasksService {
     public List<Users> getTaskUsers(Integer taskId);
     public List<Task> getTaskSubTasks(Integer taskId);
     public int getProgress(Integer taskId);
+    public double getProgressPercentage(Integer taskId);
     public void addProgress(Integer taskId, Integer userId, int hours);
     public Task addTask(Task task);
 }

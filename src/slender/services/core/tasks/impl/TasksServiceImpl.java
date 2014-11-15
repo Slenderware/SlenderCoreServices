@@ -43,6 +43,12 @@ public class TasksServiceImpl implements TasksService {
         return crud.findById(id);
     }
 
+    /**
+    * Does some thing in old style.
+    *
+    * @deprecated use {@link #getProgressPercentage()} instead.  
+    */
+    @Deprecated
     @Override
     public int getProgress(Integer taskId) {
         TaskTimeCrud crud = new TaskTimeCrudImpl();
@@ -55,6 +61,20 @@ public class TasksServiceImpl implements TasksService {
         }
         
         return progress;
+    }
+    
+    @Override
+    public double getProgressPercentage(Integer taskId) {
+        TaskTimeCrud crud = new TaskTimeCrudImpl();
+        List<TaskTime> tasks = crud.getEntitiesByProperName("taskId", taskId);
+        
+        double progress = 0;
+        
+        for(TaskTime t : tasks) {
+            progress += t.getTimeSpent();
+        }
+        
+        return Math.round((progress/tasks.size()) * 100);
     }
 
     @Override

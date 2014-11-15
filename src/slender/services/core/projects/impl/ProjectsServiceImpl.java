@@ -94,7 +94,7 @@ public class ProjectsServiceImpl implements ProjectsService {
 
     @Override
     public Project addProject(Project project) {
-       ProjectCrud crud = new ProjectCrudImpl();
-       return crud.persist(project);
+        ProjectCrud crud = new ProjectCrudImpl();
+        return crud.persist(project);
     }     
 }

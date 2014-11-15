@@ -7,6 +7,8 @@
 package slender.services.core.company;
 
 import com.slender.domain.Company;
+import com.slender.domain.Users;
+import java.util.List;
 
 /**
  *
@@ -14,4 +16,5 @@ import com.slender.domain.Company;
  */
 public interface CompanyService {
     public Company addCompany(Company company);
+    public List<Users> getCompanyUsers(Integer companyId);
 }

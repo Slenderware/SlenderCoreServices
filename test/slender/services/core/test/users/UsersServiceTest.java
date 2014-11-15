@@ -72,6 +72,12 @@ public class UsersServiceTest {
         Assert.assertEquals(time, 5);
     }
     
+    @Test
+    public void getPercentageSpentForTask() {
+        UsersService service = new UsersServiceImpl();
+        double perc = service.getPercentageSpentForTask("session0", 0);
+    }
+    
     @BeforeClass
     public static void setUpClass() throws Exception {
     }
