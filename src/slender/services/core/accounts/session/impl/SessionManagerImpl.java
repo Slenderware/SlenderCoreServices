@@ -11,13 +11,8 @@ import com.slender.domain.Users;
 import com.slender.service.crud.UserCrud;
 import com.slender.service.crud.impl.SessionCrudImpl;
 import com.slender.service.crud.impl.UserCrudImpl;
-import java.io.UnsupportedEncodingException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import slender.services.core.accounts.session.SessionManager;
 
 /**
@@ -56,26 +51,37 @@ public class SessionManagerImpl implements SessionManager {
     @Override
     public String getNewSession(String username) {
         UserCrud userCrud = new UserCrudImpl();
-        List<Users> users = userCrud.getEntitiesByProperName("username", username);
+        //List<Users> users = userCrud.getEntitiesByProperName("username", username);
+        List<Users> users = userCrud.findAll();
+        Users user = null;
         
-        if(users.size() > 0) {
+        for(Users u : users) {
+            if(u.getUsername().equals(username)) {
+                user = u;
+            }
+        }
         
-            int userId = users.get(0).getId();
+        if(users != null) {
+        
+            int userId = user.getId();
             
             SessionCrudImpl crud = new SessionCrudImpl();
-            String sessionId = getSessionString(userId);
+            String sessionId;
 
-            List<Session> tmpSession = crud.getEntitiesByProperName("id", sessionId);
+            List<Session> tmpSession = crud.getEntitiesByProperName("userId", userId);
 
             if(tmpSession.isEmpty()) {
+                sessionId = getSessionString(userId);
                 Session session = new Session();
                 session.setUserId(userId);
                 session.setId(sessionId);
 
                 crud.persist(session);
+                
+                return sessionId;
             }
 
-            return sessionId;
+            return tmpSession.get(0).getId();
         }
         
         return null;
@@ -107,17 +113,17 @@ public class SessionManagerImpl implements SessionManager {
         
         int rndm;
         Random randomGenerator = new Random();
-        for(int i = 0;i<100;i++) {
-            rndm = randomGenerator.nextInt(100);
+        for(int i = 0;i<40;i++) {
+            rndm = randomGenerator.nextInt(9);
             sessionId += rndm;
         }
         
         sessionId += userId;
-        try { 
+        /*try { 
             return new String(MessageDigest.getInstance("MD5").digest(sessionId.getBytes()), "UTF-8");
         } catch (NoSuchAlgorithmException | UnsupportedEncodingException ex) {
             Logger.getLogger(SessionManagerImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        }*/
         
         return sessionId;
     }

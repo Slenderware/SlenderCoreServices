@@ -36,4 +36,9 @@ public interface UsersProgressService {
     public int getTimeSpentForProject(String sessionId, Integer projectId);
     public double getPercentageSpentForTask(String sessionId, Integer taskId);
     public double getPercentageSpentForProject(String sessionId, Integer projectId);
+    
+    public int getTimeSpentForTask(Integer userId, Integer taskId);
+    public int getTimeSpentForProject(Integer userId, Integer projectId);
+    public double getPercentageSpentForTask(Integer userId, Integer taskId);
+    public double getPercentageSpentForProject(Integer userId, Integer projectId);
 }
