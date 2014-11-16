@@ -8,17 +8,14 @@ package slender.services.core.tasks.impl;
 
 import com.slender.domain.Attachment;
 import com.slender.domain.Comment;
-import com.slender.domain.Task;
 import com.slender.domain.UserTask;
 import com.slender.domain.Users;
 import com.slender.service.crud.AttachmentCrud;
 import com.slender.service.crud.CommentCrud;
-import com.slender.service.crud.TaskCrud;
 import com.slender.service.crud.UserCrud;
 import com.slender.service.crud.UserTaskCrud;
 import com.slender.service.crud.impl.AttachmentCrudImpl;
 import com.slender.service.crud.impl.CommentCrudImpl;
-import com.slender.service.crud.impl.TaskCrudImpl;
 import com.slender.service.crud.impl.UserCrudImpl;
 import com.slender.service.crud.impl.UserTaskCrudImpl;
 import java.io.File;
@@ -28,8 +25,29 @@ import slender.services.core.constants.Constants;
 import slender.services.core.tasks.TaskListsService;
 
 /**
- *
- * @author Heinrich
+ * @author Heinrich van den Ende
+ * 
+ *  The MIT License (MIT)
+
+    Copyright © 2014 Slenderware
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in all
+    copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+    SOFTWARE.
  */
 public class TaskListsServiceImpl implements TaskListsService {
     
