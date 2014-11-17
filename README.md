@@ -4,7 +4,7 @@ SlenderCoreServices
 The core services are responsible for retrieving and persisting data regarding the entities involved in Slenderware.
 
 Instructions can be found on wiki: https://github.com/Slenderware/SlenderCoreServices/wiki
-The API Guide and Documentation can be found at: {link}
+The API Guide and Documentation can be found at: http://www.slenderware.co.za/documentation/Slender-Services-Guide.pdf
 
 Version: 1.4
 Date: 11/16/2014
