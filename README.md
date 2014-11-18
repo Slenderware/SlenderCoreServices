@@ -5,7 +5,7 @@ The core services are responsible for retrieving and persisting data regarding t
 
 Documentation
 -------------
-For the full documentation <a href="https://drive.google.com/open?id=0B1qbAtIikoTfbGJocW43N2lLNjA&authuser=0">click here</a>
+For the full documentation <a href="https://drive.google.com/file/d/0B1qbAtIikoTfbGJocW43N2lLNjA/view?usp=sharing">click here</a>
 
 For the java documentation <a href="http://slenderware.co.za/documentation/SlenderCoreServices/index.html">click here</a>
 
